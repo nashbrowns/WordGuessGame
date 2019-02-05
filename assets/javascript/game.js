@@ -4,10 +4,14 @@ var SciChoice = SciWords[Math.floor(Math.random() * SciWords.length)]; /* Random
 
 console.log('SciChoice = '+SciChoice);
 
-var WordTemp =[]; /* Used to create a Blank Template That will be modified throughout the game */ 
-
 WordTemp = GenBlank(SciChoice);
-document.write(WordTemp);
+
+
+document.getElementById("Word-Temp").innerHTML = WordTemp;
+
+console.log(WordTemp.length);
+
+
 
 /* --------------------------------------------------------------------------------------------------------- */
 /* ------------------------------------------------ Functions ---------------------------------------------- */
@@ -15,15 +19,17 @@ document.write(WordTemp);
 
 function GenBlank(Word){
     /* Generates blank space array equal to Letters in word input in function, then returns that array */
-    var BlankArr=[];
+    var BlankArr = '_';
 
-    for(var i = 0; i<Word.length; i++){
+    for(var i = 1; i<Word.length; i++){
+
         if(Word[i]==' '){
-            BlankArr.push(' ');
+            BlankArr = BlankArr+' ';
         }
         else{
-            BlankArr.push('_'); /*Added Space after _ for better kerning*/
+            BlankArr = BlankArr+'_';
         }
+
     }
 
     console.log(BlankArr);
