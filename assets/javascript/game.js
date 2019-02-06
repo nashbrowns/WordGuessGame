@@ -77,8 +77,12 @@ function UpdateBoard(Letter){
         idx = SciChoice.indexOf(Letter, idx + 1);
     }
 
+    for(var i = 0; i<indices.length; i++){
 
-    WordTemp[SciChoice.indexOf(Letter)] = Letter; /* Putting correctly guessed letter into displayed word */
+        WordTemp[indices[i]] = Letter; /* Putting correctly guessed letter into displayed word */
+
+    }
+    /* WordTemp[SciChoice.indexOf(Letter)] = Letter; // Putting correctly guessed letter into displayed word */ 
     
     for(var i = 0; i<WordTemp.length; i++){
         StrCon = StrCon + WordTemp[i];
