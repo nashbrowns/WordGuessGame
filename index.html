@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Index</title>
-    <!-- Link to External CSS -->
+
+    <!-- Link to CSS reset -->
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 
     <!-- Link to Bootstrap CSS CDN -->
@@ -19,21 +20,65 @@
 
 </head>
 
-<body style="font-family: 'Open Sans', sans-serif !important; background-image: url('assets/images/blue-space.png'); background-size:1600px 1600px; background-repeat: no-repeat">
+<body style="font-family: 'Open Sans', sans-serif !important; background-image: url('assets/images/Space.png'); background-size:1600px 1600px; background-repeat: no-repeat">
 
-        <div class="jumbotron jumbotron-fluid" style = "background-color: rgba(204, 102, 255,0.2)">
-                <div class="container">
-                    <h1 style = "text-align: center" class = "display-6">Sci-Fi Word Guess Game</h1>
-                </div>
+    <div class="jumbotron jumbotron-fluid" style = "background-color: rgba(31, 15, 39, 0.356)">
+        <div class="container">
+            <h1 style = "text-align: center; color: rgb(255, 255, 255)" class = "display-6">Sci-Fi Word Guess Game</h1>
+            <h1 class="display-4" id="Win_Lose" style = "color: rgb(131, 253, 217); text-align:center;"></h1>
         </div>
+    </div>
 
-        <div class="jumbotron jumbotron-fluid" style = "background-color: rgba(204, 102, 255,0.2); color:black">
-                <div class="container">
-                    <h1 class="display-6"></h1>
-                    <h1 class="display-4" id="Word-Temp" style = "letter-spacing: 10px;"></h1>
-                    <p class="lead" id="Incorrect-Guess" style = "letter-spacing: 2px;"></p>
-                    <p class="lead" id="Guess-Count" style = "letter-spacing: 2px;"></p>
+    <div class = "container">
+        <div class = "row">
+            <div class = "col-md-7">
+                <div class = "row">
+                    <div class = "col">
+                    <div class="jumbotron jumbotron-fluid" style = "text-align:center; background-color: rgba(204, 102, 255,0.2);  color:rgb(102, 255, 204)">
+                            <div class="container">
+                                <h1 class="display-6"></h1>
+                                <h1 class="display-4" id="Word-Temp" style = "letter-spacing: 10px;"></h1>
+                            </div>
+                    </div>
+                    </div>>
                 </div>
+                <div class = "row">
+                    <div class = "col"></div>
+                    <div class = "col">
+                        <div class="card" style="width: 20rem; background-color: rgba(204, 102, 255,0.2);">
+                                <div class="card-body">
+                                    <h5 class="card-title" id = "WinText" style = "text-align:center; color: rgb(131, 253, 217)"></h5>
+                                    <div class = "container" style = "height:200px;">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class = "col"></div>
+                </div>
+            </div>
+            <div class = "col-md-5">
+                <div class="card" style="width: 20rem; background-color: rgba(204, 102, 255,0.2); color: rgba(250, 108, 108)">
+                        <div class="card-body">
+                            <h5 class="card-title">Instructions</h5>
+                            <ul class = "list-group">
+                                <li class="list-group-item list-group-item-info">Press a Key to choose a letter</li>
+                                <li class="list-group-item list-group-item-info">You have 10 incorrect guesses</li>
+                                <li class="list-group-item list-group-item-info">You win if you manage to guess all of the letters in a word</li>
+                            </ul>
+                        </div>
+                </div>
+                <div class="card" style="width: 20rem; background-color: rgba(204, 102, 255,0.2); color:black">
+                    <div class="card-body">
+                      <h5 class="card-title" style = "color: rgba(250, 108, 108)">Guesses Remaining</h5>
+                      <h6 class="card-subtitle mb-2" id="Guess-Count" style = "color:rgb(76, 164, 247)" ></h6>
+                      <h5 class="card-title" style = "color: rgba(250, 108, 108)">Already Guessed</h5>
+                      <h6 class="card-subtitle mb-2" id="Incorrect-Guess" style = "color:rgb(76, 164, 247)" ></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
         </div>
 
         <script src="assets/javascript/game.js">/* Link to External JavaScript */ </script> 

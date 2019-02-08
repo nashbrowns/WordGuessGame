@@ -13,9 +13,21 @@ WordTemp = GenBlank(SciChoice);
 console.log(typeof WordTemp);
 
 document.getElementById("Word-Temp").innerHTML = WordTemp;
+document.getElementById("Incorrect-Guess").innerHTML = IncorrectGuess;
+document.getElementById("Guess-Count").innerHTML = GuessCount;
+document.getElementById("Win_Lose").innerHTML = "";
 
-document.getElementById("Guess-Count").innerHTML = "Guesses Left: "+GuessCount;
+var CorrectNoise = document.createElement("audio");
+CorrectNoise.setAttribute("src", "assets/sounds/Laser.mp3");
+$(CorrectNoise).prop('volume', .3);
 
+var IncorrectNoise = document.createElement("audio");
+IncorrectNoise.setAttribute("src", "assets/sounds/Wilhelm.mp3");
+$(IncorrectNoise).prop('volume', .3);
+
+var WinNoise = document.createElement("audio");
+WinNoise.setAttribute("src", "assets/sounds/Win.flac");
+$(WinNoise).prop('volume', 1);
 
 
 document.onkeyup = function(event) {
@@ -24,7 +36,7 @@ document.onkeyup = function(event) {
 
     if( (Alphanumeric(Guess)) && (CorrectGuess.indexOf(Guess) == -1) && (IncorrectGuess.indexOf(Guess) == -1) ){
 
-        
+
         if( SciChoice.indexOf(Guess) !== -1 ){
             CorrectGuess.push(Guess);
             UpdateBoard(Guess);
@@ -35,19 +47,16 @@ document.onkeyup = function(event) {
             GuessCount--;
             document.getElementById("Guess-Count").innerHTML = GuessCount;       
         }
-
-    }
-
-    if(GuessCount == 0){
-        alert("Game Over!");
-        ChoooseNew();
-    }
-
-    if(WordTemp == SciChoice){
-        $(document).ready(function() {
-            alert("You Win!");
+        if(GuessCount == 0){
+            ResetPause('Lose',SciChoice);
             ChoooseNew();
-        });
+        }
+    
+        if(WordTemp == SciChoice){
+            WinNoise.play();
+            ResetPause('Win', SciChoice);
+            ChoooseNew();
+        }
     }
 
   };
@@ -63,9 +72,10 @@ function ChoooseNew(){
     SciChoice = SciChoice.toUpperCase();
     GuessCount = 10; //Stores number of guesses
     WordTemp = GenBlank(SciChoice);
+
     document.getElementById("Word-Temp").innerHTML = WordTemp; 
     document.getElementById("Incorrect-Guess").innerHTML = "";
-    document.getElementById("Guess-Count").innerHTML = "";
+    document.getElementById("Guess-Count").innerHTML = GuessCount;
   
 }
 
@@ -130,7 +140,19 @@ function UpdateBoard(Letter){
     
     document.getElementById("Word-Temp").innerHTML = WordTemp;
 
-} 
+}
+
+function ResetPause(WinOrLose, SciChoice){
+
+    if(WinOrLose == 'Win'){
+        document.getElementById("Win_Lose").innerHTML = "You Win!";
+        document.getElementById("WinText").innerHTML = SciChoice;
+    }
+    else{
+        document.getElementById("Win_Lose").innerHTML = "You Lose!";
+    }
+    
+}
 
 /* --------------------------------------------------------------------------------------------------------- */
 /* --------------------------------------------------------------------------------------------------------- */
