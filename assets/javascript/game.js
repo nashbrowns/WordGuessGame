@@ -14,29 +14,26 @@ console.log(typeof WordTemp);
 
 document.getElementById("Word-Temp").innerHTML = WordTemp;
 
+document.getElementById("Guess-Count").innerHTML = "Guesses Left: "+GuessCount;
+
 
 
 document.onkeyup = function(event) {
 
     var Guess = event.key.toUpperCase();
 
-    console.log(typeof Guess);
-
-    if( (Alphanumeric(Guess)) && (CorrectGuess.indexOf(Guess) == -1) && (IncorrectGuess.indexOf(Guess) == -1) && (Guess != 'CAPSLOCK') ){
+    if( (Alphanumeric(Guess)) && (CorrectGuess.indexOf(Guess) == -1) && (IncorrectGuess.indexOf(Guess) == -1) ){
 
         
         if( SciChoice.indexOf(Guess) !== -1 ){
             CorrectGuess.push(Guess);
-            console.log("Correct = "+CorrectGuess);
             UpdateBoard(Guess);
         }
         else{
             IncorrectGuess.push(Guess.toUpperCase());
-            console.log("Incorrect = "+IncorrectGuess);
             document.getElementById("Incorrect-Guess").innerHTML = IncorrectGuess;
             GuessCount--;
-            document.getElementById("Guess-Count").innerHTML = GuessCount;
-            console.log("Number of Wrong Guesses = " + GuessCount);        
+            document.getElementById("Guess-Count").innerHTML = GuessCount;       
         }
 
     }
@@ -96,7 +93,7 @@ function GenBlank(Word){
 }
 
 function Alphanumeric(Letter){ 
-    var Alpha = /^[a-zA-Z]+$/;
+    var Alpha = /^[a-zA-Z]$/;
     if(Letter.match(Alpha)){ 
         return true; 
     } 
