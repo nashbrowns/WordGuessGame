@@ -11,11 +11,27 @@
     <!-- Link to Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
+    <!-- Link to jQuery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
 
 </head>
-<body>
-    
-    <p id="Word-Temp" style="letter-spacing: 2px;"></p>
+<body style = "background-image: url('https://i.pinimg.com/originals/5b/17/b2/5b17b2b4f26aa523dca15fbf902223b4.jpg')">
+
+    <div class="jumbotron jumbotron-fluid" style = "background-image: url('assets/images/5de99b052b21767e82985eca68397c0b.jpg'); background-repeat: no-repeat; background-size: cover;">
+            <div class="container">
+            </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-6">Sci-Fi Word Guess Game</h1>
+                <h1 class="display-4" id="Word-Temp" style = "letter-spacing: 10px;"></h1>
+                <p class="lead" id="Incorrect-Guess" style = "letter-spacing: 2px;"></p>
+                <p class="lead" id="Guess-Count" style = "letter-spacing: 2px;"></p>
+            </div>
+    </div>
 
     <script src="assets/javascript/game.js">/* Link to External JavaScript */ </script>
     

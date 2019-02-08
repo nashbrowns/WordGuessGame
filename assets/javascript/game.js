@@ -1,9 +1,11 @@
-var SciWords = ['dune', 'riker', 'darth vader', 'android', 'phillip k dick', 'cyberspace', 'alien']; /* Initializing Sci-Fi Word Bank */
-var CorrectGuess = [];
-var IncorrectGuess = [];
-
+var SciWords = ['dune', 'enterprise', 'darth vader', 'android', 'phillip k dick', 'cyberspace', "ender's game", 'neuromancer', 'jean luc picard','vulcan', 'starship troopers']; /* Initializing Sci-Fi Word Bank */
+var CorrectGuess = []; //Stores correctly guessed letters
+var IncorrectGuess = []; //Stores incorrectly guessed letters
+var NewArray = []; //Stores empty array for new game
 var SciChoice = SciWords[Math.floor(Math.random() * SciWords.length)]; /* Randomly chooses word from SciWords array */
+var GuessCount = 10; //Stores number of guesses
 
+SciChoice = SciChoice.toUpperCase();
 console.log('SciChoice = '+SciChoice);
 
 WordTemp = GenBlank(SciChoice);
@@ -12,27 +14,63 @@ console.log(typeof WordTemp);
 
 document.getElementById("Word-Temp").innerHTML = WordTemp;
 
-document.onkeyup = function(event) {
-    if( (Alphanumeric(event.key)) && (CorrectGuess.indexOf(event.key) == -1) && (IncorrectGuess.indexOf(event.key) == -1)){
 
-        var Guess = event.key.toLowerCase();
+
+document.onkeyup = function(event) {
+
+    var Guess = event.key.toUpperCase();
+
+    console.log(typeof Guess);
+
+    if( (Alphanumeric(Guess)) && (CorrectGuess.indexOf(Guess) == -1) && (IncorrectGuess.indexOf(Guess) == -1) && (Guess != 'CAPSLOCK') ){
+
         
         if( SciChoice.indexOf(Guess) !== -1 ){
             CorrectGuess.push(Guess);
-            console.log(CorrectGuess);
+            console.log("Correct = "+CorrectGuess);
             UpdateBoard(Guess);
         }
         else{
-            IncorrectGuess.push(Guess);
-            console.log(IncorrectGuess);
+            IncorrectGuess.push(Guess.toUpperCase());
+            console.log("Incorrect = "+IncorrectGuess);
+            document.getElementById("Incorrect-Guess").innerHTML = IncorrectGuess;
+            GuessCount--;
+            document.getElementById("Guess-Count").innerHTML = GuessCount;
+            console.log("Number of Wrong Guesses = " + GuessCount);        
         }
 
     }
+
+    if(GuessCount == 0){
+        alert("Game Over!");
+        ChoooseNew();
+    }
+
+    if(WordTemp == SciChoice){
+        $(document).ready(function() {
+            alert("You Win!");
+            ChoooseNew();
+        });
+    }
+
   };
 
 /* --------------------------------------------------------------------------------------------------------- */
 /* ------------------------------------------------ Functions ---------------------------------------------- */
 /* --------------------------------------------------------------------------------------------------------- */
+
+function ChoooseNew(){
+    CorrectGuess = [];
+    IncorrectGuess = [];
+    SciChoice = SciWords[Math.floor(Math.random() * SciWords.length)]; /* Randomly chooses word from SciWords array */
+    SciChoice = SciChoice.toUpperCase();
+    GuessCount = 10; //Stores number of guesses
+    WordTemp = GenBlank(SciChoice);
+    document.getElementById("Word-Temp").innerHTML = WordTemp; 
+    document.getElementById("Incorrect-Guess").innerHTML = "";
+    document.getElementById("Guess-Count").innerHTML = "";
+  
+}
 
 function GenBlank(Word){
     /* Generates blank space array equal to Letters in word input in function, then returns that array */
@@ -42,6 +80,9 @@ function GenBlank(Word){
 
         if(Word[i]==' '){
             BlankArr = BlankArr+' ';
+        }
+        else if(Word[i]=="'"){
+            BlankArr = BlankArr+"'";
         }
         else{
             BlankArr = BlankArr+'_';
