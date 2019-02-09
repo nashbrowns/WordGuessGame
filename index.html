@@ -22,19 +22,19 @@
 
 <body style="font-family: 'Open Sans', sans-serif !important; background-image: url('assets/images/Space.png'); background-size:1600px 1600px; background-repeat: no-repeat">
 
-    <div class="jumbotron jumbotron-fluid" style = "background-color: rgba(31, 15, 39, 0.356)">
+    <div class="jumbotron jumbotron-fluid" style = "background-color: rgba(31, 15, 39, 0.356); padding-top: 10px; padding-bottom: 0px;">
         <div class="container">
             <h1 style = "text-align: center; color: rgb(255, 255, 255)" class = "display-6">Sci-Fi Word Guess Game</h1>
             <h1 class="display-4" id="Win_Lose" style = "color: rgb(131, 253, 217); text-align:center;"></h1>
         </div>
     </div>
 
-    <div class = "container">
+    <div class = "container" style = "margin-bottom: 50px;">
         <div class = "row">
             <div class = "col-md-7">
                 <div class = "row">
                     <div class = "col">
-                    <div class="jumbotron jumbotron-fluid" style = "text-align:center; background-color: rgba(204, 102, 255,0.2);  color:rgb(102, 255, 204)">
+                    <div class="jumbotron jumbotron-fluid" style = "text-align:center; background-color: rgba(204, 102, 255,0.2);  color:rgb(102, 255, 204);">
                             <div class="container">
                                 <h1 class="display-6"></h1>
                                 <h1 class="display-4" id="Word-Temp" style = "letter-spacing: 10px;"></h1>
@@ -42,19 +42,25 @@
                     </div>
                     </div>>
                 </div>
+
                 <div class = "row">
+
                     <div class = "col"></div>
+
                     <div class = "col">
                         <div class="card" style="width: 20rem; background-color: rgba(204, 102, 255,0.2);">
                                 <div class="card-body">
                                     <h5 class="card-title" id = "WinText" style = "text-align:center; color: rgb(131, 253, 217)"></h5>
-                                    <div class = "container" style = "height:200px;">
+                                    <div class = "container" id = "Img-Place" style = "height:300px;">
                                     </div>
                                 </div>
                         </div>
                     </div>
+
                     <div class = "col"></div>
+
                 </div>
+
             </div>
             <div class = "col-md-5">
                 <div class="card" style="width: 20rem; background-color: rgba(204, 102, 255,0.2); color: rgba(250, 108, 108)">

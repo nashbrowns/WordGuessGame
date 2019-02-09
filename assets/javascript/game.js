@@ -1,4 +1,5 @@
-var SciWords = ['dune', 'enterprise', 'darth vader', 'android', 'phillip k dick', 'cyberspace', "ender's game", 'neuromancer', 'jean luc picard','vulcan', 'starship troopers']; /* Initializing Sci-Fi Word Bank */
+var SciWords = ['DUNE', 'ENTERPRISE', 'DARTH VADER', 'ANDROID', 'PHILIP K DICK', 'CYBERSPACE', "ENDER'S GAME", 'NEUROMANCER', 'JEAN LUC PICARD','VULCAN', 'STARSHIP TROOPERS']; /* Initializing Sci-Fi Word Bank */
+var ImgSrc = ['Dune.jpg', 'Enterprise.jpg', 'DarthVader.jpg', 'Android.jpg', 'PhilipDick.jpg', 'Cyberspace.jpg', 'EndersGame.jpg', 'Neuromancer.jpg', 'Picard.jpg', 'Vulcan.png', 'StarshipTroopers.jpg'];
 var CorrectGuess = []; //Stores correctly guessed letters
 var IncorrectGuess = []; //Stores incorrectly guessed letters
 var NewArray = []; //Stores empty array for new game
@@ -29,6 +30,12 @@ var WinNoise = document.createElement("audio");
 WinNoise.setAttribute("src", "assets/sounds/Win.flac");
 $(WinNoise).prop('volume', 1);
 
+var WinImg = document.createElement("img");
+WinImg.setAttribute('src', 'assets/images/Blank.jpg');
+WinImg.width='250';
+WinImg.height='275';
+$(WinImg).appendTo("#Img-Place");
+
 
 document.onkeyup = function(event) {
 
@@ -48,7 +55,7 @@ document.onkeyup = function(event) {
             document.getElementById("Guess-Count").innerHTML = GuessCount;       
         }
         if(GuessCount == 0){
-            ResetPause('Lose',SciChoice);
+            ResetPause('Lose', SciChoice);
             ChoooseNew();
         }
     
@@ -145,11 +152,16 @@ function UpdateBoard(Letter){
 function ResetPause(WinOrLose, SciChoice){
 
     if(WinOrLose == 'Win'){
+        WinImg.setAttribute('src', 'assets/images/'+ImgSrc[SciWords.indexOf(SciChoice)]);
         document.getElementById("Win_Lose").innerHTML = "You Win!";
         document.getElementById("WinText").innerHTML = SciChoice;
+        
+        
     }
     else{
         document.getElementById("Win_Lose").innerHTML = "You Lose!";
+        WinImg.setAttribute('src', 'assets/images/Blank.jpg');
+        document.getElementById("WinText").innerHTML = "";
     }
     
 }
