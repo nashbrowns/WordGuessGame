@@ -4,7 +4,7 @@ var CorrectGuess = []; //Stores correctly guessed letters
 var IncorrectGuess = []; //Stores incorrectly guessed letters
 var NewArray = []; //Stores empty array for new game
 var SciChoice = SciWords[Math.floor(Math.random() * SciWords.length)]; /* Randomly chooses word from SciWords array */
-var GuessCount = 10; //Stores number of guesses
+var GuessCount = 15; //Stores number of guesses
 
 SciChoice = SciChoice.toUpperCase();
 console.log('SciChoice = '+SciChoice);
@@ -77,7 +77,7 @@ function ChoooseNew(){
     IncorrectGuess = [];
     SciChoice = SciWords[Math.floor(Math.random() * SciWords.length)]; /* Randomly chooses word from SciWords array */
     SciChoice = SciChoice.toUpperCase();
-    GuessCount = 10; //Stores number of guesses
+    GuessCount = 15; //Stores number of guesses
     WordTemp = GenBlank(SciChoice);
 
     document.getElementById("Word-Temp").innerHTML = WordTemp; 
